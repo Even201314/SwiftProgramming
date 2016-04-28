@@ -2,7 +2,7 @@
 //  SwiftProgrammingTests.swift
 //  SwiftProgrammingTests
 //
-//  Created by vince.yu on 28/4/16.
+//  Created by even.wu on 28/4/16.
 //  Copyright © 2016年 Even. All rights reserved.
 //
 
