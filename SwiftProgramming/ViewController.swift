@@ -96,6 +96,16 @@ class ViewController: UIViewController {
             }
         }
         printSomeThing("TeamScore: " + String(teamScore))
+        
+        let optionalString: String? = "Hello"
+        print(optionalString == nil)
+        
+        let optionalName: String? = "John Appleseed"
+        var greeting = "Hello!"
+        if let name = optionalName{
+            greeting = "Hello, \(name)"
+        }
+        printSomeThing(greeting)
     }
 }
 
