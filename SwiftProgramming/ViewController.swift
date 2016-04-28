@@ -2,7 +2,7 @@
 //  Swift 初见
 //  http://wiki.jikexueyuan.com/project/swift/chapter1/02_a_swift_tour.html
 //  ViewController.swift
-//  SwiftProgramming 
+//  SwiftProgramming
 //
 //  Created by even.wu on 28/4/16.
 //  Copyright © 2016年 Even. All rights reserved.
@@ -23,6 +23,7 @@ class ViewController: UIViewController {
         learnCollection()
         
         learnConditionControl()
+        conditionForIn()
     }
     
     override func didReceiveMemoryWarning() {
@@ -106,6 +107,64 @@ class ViewController: UIViewController {
             greeting = "Hello, \(name)"
         }
         printSomeThing(greeting)
+        
+        let nickName: String? = nil
+        let fullName: String = "John Appleseed"
+        let informalGreeting = "Hi \(nickName ?? fullName)"
+        printSomeThing(informalGreeting)
+        
+        let vegetable = "red pepper"
+        switch vegetable {
+        case "celery":
+            printSomeThing("Add some raisins and make ants on a log")
+        case "cucumber", "watercress":
+            printSomeThing("That would make a good tea sandwich")
+        case let x where x.hasSuffix("pepper"):
+            printSomeThing("Is it a spicy \(x)")
+        default:
+            printSomeThing("Everything tastes good in soup.")
+        }
+        
+        condition2()
+    }
+    
+    func conditionForIn(){
+        let interestingNumbers = ["Prime":[2, 3, 5, 7, 11, 13], "Fibonacci": [1, 1, 2, 3, 5, 8], "Squate": [1, 4, 9, 16, 25]]
+        var largest = 0
+        for(_, numbers) in interestingNumbers{
+            for number in numbers{
+                if number > largest{
+                    largest = number
+                }
+            }
+        }
+        printSomeThing("largest:" + String(largest))
+    }
+    
+    func condition2(){
+        var n = 2
+        while n < 100 {
+            n = n * 2
+        }
+        print(n)
+        
+        var m = 2
+        repeat{
+            m = m * 2
+        }while  m < 100
+        print (m)
+        
+        var total = 0
+        for i in 0..<4{
+            total += i
+        }
+        print(total)
+        
+        total = 0
+        for i in 0...4 {
+            total += i
+        }
+        print(total)
     }
 }
 
