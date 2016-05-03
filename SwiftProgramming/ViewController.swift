@@ -24,6 +24,22 @@ class ViewController: UIViewController {
         
         learnConditionControl()
         conditionForIn()
+        
+        printSomeThing(greet("Tom", day: "Tuesday"))
+        
+        let statistics = calculateStatistics([5, 3, 100, 3, 9])
+        printSomeThing("statistics.min = \(statistics.min)")
+        printSomeThing("statistics.max = \(statistics.max)")
+        printSomeThing("statistics.sum = \(statistics.sum)")
+        
+        printSomeThing("sum of 75, 35, 12: \(sumOf(75, 35, 12))")
+        printSomeThing("sum of : \(sumOf())")
+        
+        let increment = makeIncrementer()
+        increment(7)
+        
+        let triangle = Square(sideLength: 5.2, name: "My Test Square")
+        printSomeThing(triangle.simpleDescription())
     }
     
     override func didReceiveMemoryWarning() {
@@ -165,6 +181,80 @@ class ViewController: UIViewController {
             total += i
         }
         print(total)
+    }
+    
+    func greet(name: String, day: String) -> String{
+        return "Hello,\(name),today is \(day)"
+    }
+    
+    func calculateStatistics(scores: [Int]) -> (min: Int, max: Int, sum: Int){
+        var min = scores[0]
+        var max = scores[0]
+        var sum = scores[0]
+        
+        for score in scores{
+            if min > score{
+                min = score
+            }
+            if max < score{
+                max = score
+            }
+            sum += score
+        }
+        
+        return (min, max, sum)
+    }
+    
+    func sumOf(numbers: Int...) -> Int{
+        var sum = 0
+        for number in numbers{
+            sum += number
+        }
+        return sum
+    }
+    
+    func makeIncrementer() -> (Int -> Int){
+        func addOne(number: Int) -> Int{
+            return number + 1
+        }
+        return addOne
+    }
+    
+    class NameShape {
+        var numberOfSides: Int = 0
+        var name: String
+        
+        init(name: String){
+            self.name = name
+        }
+        
+        func simpleDescription() -> String{
+            return "A shape with \(numberOfSides) sides."
+        }
+    }
+    
+    class Square: NameShape {
+        var sideLength: Double
+        
+        init(sideLength: Double, name: String){
+            self.sideLength = sideLength
+            super.init(name: name)
+            numberOfSides = 3
+        }
+        
+        var perimeter: Double{
+            get{
+                return 3.0 * sideLength
+            }
+            
+            set{
+                sideLength = newValue / 3.0
+            }
+        }
+        
+        override func simpleDescription() -> String {
+            return "An equilateral triggle with sides of length \(sideLength)."
+        }
     }
 }
 
